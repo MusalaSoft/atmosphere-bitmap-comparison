@@ -23,22 +23,22 @@ public class KMPWithHashingMatrixComparator implements IMatrixComparator {
 
         // Hashing the matrixes and getting the needed value for the algorithm
         // The matrixes are hashed by rows because it's faster than by columns
-        Long[] smallHashedMatrixLastColumn = HashingUtils.getLastHashedColumnOfMatrix(smallMatrix);
-        Long[][] bigHashedMatrix = HashingUtils.hashMatrix(bigMatrix);
+        long[] smallHashedMatrixLastColumn = HashingUtils.getLastHashedColumnOfMatrix(smallMatrix);
+        long[][] bigHashedMatrix = HashingUtils.hashMatrix(bigMatrix);
 
         // Precomputes smallMatrix Columns so it can be used for KMP algorithm
-        int[] preprocessedLastColumn = KMPAlgorithm.preProcessPattern(smallHashedMatrixLastColumn);
+        int[] preprocessedLastColumn = ArrayComparator.preProcessPattern(smallHashedMatrixLastColumn);
 
         // Searching by Columns
         for (int j = smallMatrixColumns - 1; j < bigMatrixColumns; j++) {
 
             // PreHashing the current column of the bigMatrix
-            Long[] bigMatrixHashedColumn = HashingUtils.hashMatrixColumn(bigHashedMatrix, j, smallMatrixColumns);
+            long[] bigMatrixHashedColumn = HashingUtils.getRangeColumnHash(bigHashedMatrix, j, smallMatrixColumns);
 
             // Run the Original KMP Algorithm with smallMatrix Hashed Last Column and bigMatrix preHashed current Column
-            boolean isFound = KMPAlgorithm.searchSubArray(bigMatrixHashedColumn,
-                                                          smallHashedMatrixLastColumn,
-                                                          preprocessedLastColumn);
+            boolean isFound = ArrayComparator.searchSubArray(bigMatrixHashedColumn,
+                                                             smallHashedMatrixLastColumn,
+                                                             preprocessedLastColumn);
 
             if (isFound) {
                 return true;

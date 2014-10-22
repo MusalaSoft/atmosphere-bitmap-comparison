@@ -113,7 +113,6 @@ public class HashingUtils {
         int matrixColumns = matrix[0].length;
         long[][] hashedMatrix = new long[matrixRows][matrixColumns];
         for (int i = 0; i < matrixRows; i++) {
-            long h = 0;
             for (int j = 0; j < matrixColumns; j++) {
                 if (j == 0) {
                     hashedMatrix[i][j] = matrix[i][j] % MOD_NUMBER;
