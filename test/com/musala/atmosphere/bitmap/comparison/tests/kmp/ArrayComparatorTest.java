@@ -12,7 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.musala.atmosphere.bitmap.comparison.kmp.ArrayComparator;
-import com.musala.atmosphere.bitmap.comparison.tests.MatrixAlgorithmConstants;
+import com.musala.atmosphere.bitmap.comparison.tests.MatrixComparatorTestConstant;
 
 /**
  * 
@@ -21,36 +21,36 @@ import com.musala.atmosphere.bitmap.comparison.tests.MatrixAlgorithmConstants;
  */
 public class ArrayComparatorTest {
 
-    private long[] bigArray;
+    private static long[] bigArray;
 
     @BeforeClass
-    public void setUp() throws FileNotFoundException {
-        bigArray = loadArray(MatrixAlgorithmConstants.BIG_ARRAY);
+    public static void setUp() throws FileNotFoundException {
+        bigArray = loadArray(MatrixComparatorTestConstant.BIG_ARRAY);
     }
 
     @Test
     public void testSearchSubArrayAtTheBeginning() throws FileNotFoundException {
-        long[] arrayAtTheBeginning = loadArray(MatrixAlgorithmConstants.ARRAY_BEGINNING);
+        long[] arrayAtTheBeginning = loadArray(MatrixComparatorTestConstant.ARRAY_BEGINNING);
         assertTrue("Array not found when present.", ArrayComparator.searchSubArray(bigArray, arrayAtTheBeginning));
     }
 
     @Test
     public void testSearchSubArrayAtTheEnd() throws FileNotFoundException {
-        long[] arrayAtTheEnd = loadArray(MatrixAlgorithmConstants.ARRAY_END);
+        long[] arrayAtTheEnd = loadArray(MatrixComparatorTestConstant.ARRAY_END);
         assertTrue("Array not found when present.", ArrayComparator.searchSubArray(bigArray, arrayAtTheEnd));
     }
 
     @Test
     public void testSearchSubArrayAtTheMiddle() throws FileNotFoundException {
-        long[] arrayAtTheMiddle = loadArray(MatrixAlgorithmConstants.ARRAY_MIDDLE);
+        long[] arrayAtTheMiddle = loadArray(MatrixComparatorTestConstant.ARRAY_MIDDLE);
         assertTrue("Array not found when present.", ArrayComparator.searchSubArray(bigArray, arrayAtTheMiddle));
     }
 
     @Test
     public void testSearchSubArrayExistingCell() throws FileNotFoundException {
-        long[] existingCell = loadArray(MatrixAlgorithmConstants.ARRAY_EXISTING_CELL);
+        long[] existingCell = loadArray(MatrixComparatorTestConstant.ARRAY_EXISTING_CELL);
         assertTrue("Array not found when present.", ArrayComparator.searchSubArray(bigArray, existingCell));
-        long[] nonExistentCell = loadArray(MatrixAlgorithmConstants.ARRAY_NON_EXISTING_CELL);
+        long[] nonExistentCell = loadArray(MatrixComparatorTestConstant.ARRAY_NON_EXISTING_CELL);
         assertFalse("Array found when not present.", ArrayComparator.searchSubArray(bigArray, nonExistentCell));
     }
 
@@ -62,13 +62,13 @@ public class ArrayComparatorTest {
 
     @Test
     public void testSearchSubArrayNonExistentArray() throws FileNotFoundException {
-        long[] nonExistentArray = loadArray(MatrixAlgorithmConstants.NON_EXISTING_ARRAY);
+        long[] nonExistentArray = loadArray(MatrixComparatorTestConstant.NON_EXISTING_ARRAY);
         assertFalse("Array found when not present.", ArrayComparator.searchSubArray(bigArray, nonExistentArray));
     }
 
-    private long[] loadArray(String arrayName) throws FileNotFoundException {
-        String pathFile = String.format(MatrixAlgorithmConstants.ARRAYS_PATH_FILE_FORMAT, arrayName);// "resources/Arrays/"
-                                                                                                     // +
+    private static long[] loadArray(String arrayName) throws FileNotFoundException {
+        String pathFile = String.format(MatrixComparatorTestConstant.ARRAYS_PATH_FILE_FORMAT, arrayName);// "resources/Arrays/"
+        // +
         File arrayFile = new File(pathFile);
         Scanner scannerNoDelimiter = new Scanner(arrayFile);
         Scanner scanner = scannerNoDelimiter.useDelimiter(", ");
