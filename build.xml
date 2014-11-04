@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<project basedir="." default="build" name="BitMapComparison">    
+
+    <property name="dependency.projects" value=""/>
+
+    <import file="../common-build.xml"/>
+
+
+    <target name="init-tests">
+        <mkdir dir="${testclasses.dir}"/>
+        <copy includeemptydirs="false" todir="${testclasses.dir}">
+            <fileset dir="${test.dir}">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+
+        <mkdir dir="${testresources.dir}"/>
+        <copy includeemptydirs="false" todir="${testresources.dir}">
+            <fileset dir="${resources.dir}">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+</project>

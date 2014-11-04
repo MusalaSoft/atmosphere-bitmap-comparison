@@ -17,7 +17,7 @@ import com.musala.atmosphere.bitmap.comparison.tests.MatrixComparatorTest;
  * @author denis.bialev
  * 
  */
-public class KMPWithHashingMatrixComparatorTest extends MatrixComparatorTest {
+public class HashedMatrixKMPComparatorTest extends MatrixComparatorTest {
 
     private static final int MATRIX_VALUE = 7;
 
