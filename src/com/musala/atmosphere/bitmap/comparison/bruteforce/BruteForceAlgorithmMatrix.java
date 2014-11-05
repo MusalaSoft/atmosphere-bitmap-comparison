@@ -13,32 +13,38 @@ import com.musala.atmosphere.bitmap.comparison.utils.HashingUtils;
 public class BruteForceAlgorithmMatrix implements IMatrixComparator {
 
     @Override
-    public boolean containsMatrix(int[][] bigMatrix, int[][] smallMatrix) {
+    public boolean containsMatrix(int[][] matrix, int[][] subMatrix) {
 
-        if (!HashingUtils.checkBounds(bigMatrix, smallMatrix)) {
+        if (!HashingUtils.checkBounds(matrix, subMatrix)) {
             return false;
         }
-        int bigMatrixRows = bigMatrix.length;
-        int bigMatrixColumns = bigMatrix[0].length;
-        int smallMatrixRows = smallMatrix.length;
-        int smallMatrixColumns = smallMatrix[0].length;
+        int matrixRows = matrix.length;
+        int matrixColumns = matrix[0].length;
+        int subMatrixRows = subMatrix.length;
+        int subMatrixColumns = subMatrix[0].length;
+
         boolean isContainingMatrix = false;
 
-        for (int bigI = 0; bigI <= bigMatrixRows - smallMatrixRows; bigI++) {
-            for (int bigJ = 0; bigJ <= bigMatrixColumns - smallMatrixColumns; bigJ++) {
+        for (int currentMatrixRow = 0; currentMatrixRow <= matrixRows - subMatrixRows; currentMatrixRow++) {
+            for (int currentMatrixColumn = 0; currentMatrixColumn <= matrixColumns - subMatrixColumns; currentMatrixColumn++) {
                 isContainingMatrix = true;
-                for (int smallI = 0; smallI < smallMatrixRows; smallI++) {
-                    for (int smallJ = 0; smallJ < smallMatrixColumns && isContainingMatrix; smallJ++) {
-                        if (bigMatrix[bigI + smallI][bigJ + smallJ] != smallMatrix[smallI][smallJ]) {
+                matrixComparator: for (int currentSubmatrixRow = 0; currentSubmatrixRow < subMatrixRows; currentSubmatrixRow++) {
+                    for (int currentSubmatrixColumn = 0; currentSubmatrixColumn < subMatrixColumns
+                            && isContainingMatrix; currentSubmatrixColumn++) {
+                        if (matrix[currentMatrixRow + currentSubmatrixRow][currentMatrixColumn + currentSubmatrixColumn] != subMatrix[currentSubmatrixRow][currentSubmatrixColumn]) {
                             isContainingMatrix = false;
+                            break matrixComparator;
                         }
                     }
                 }
+
                 if (isContainingMatrix) {
                     return true;
                 }
+
             }
         }
+
         return false;
     }
 }

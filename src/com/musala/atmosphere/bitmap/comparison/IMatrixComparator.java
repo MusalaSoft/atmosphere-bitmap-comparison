@@ -10,11 +10,11 @@ public interface IMatrixComparator {
     /**
      * Method that checks if the big matrix contains the small matrix in it.
      * 
-     * @param bigMatrix
-     *        - matrix to search in.
-     * @param smallMatrix
-     *        - matrix to look for.
+     * @param matrix
+     *        - matrix to search in
+     * @param soughtForMatrix
+     *        - matrix to look for
      * @return <code>true</code> if bigMatrix contains the smallMatrix in it and <code>false</code> otherwise.
      */
-    public boolean containsMatrix(int[][] bigMatrix, int[][] smallMatrix);
+    public boolean containsMatrix(int[][] matrix, int[][] soughtForMatrix);
 }
