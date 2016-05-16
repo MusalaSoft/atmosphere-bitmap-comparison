@@ -1,0 +1,47 @@
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+version = '0.0.1'
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Atmosphere Bitmap Comparison',
+                   'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    testCompile 'junit:junit:4.12'
+}
+
+sourceSets {
+    main.java.srcDir 'src'
+    test.java.srcDir 'test'
+    test.resources.srcDir 'resources'
+}
+
+publishing {
+    publications {
+        atmosphereCommons(MavenPublication) {
+            groupId 'com.musala.atmosphere'
+            artifactId 'atmosphere-bitmap-comparison'
+            version version
+
+            from components.java
+        }
+    }
+
+    repositories {
+        mavenLocal()
+    }
+}
+
+tasks.withType(Test) {
+    scanForTestClasses = false
+    include "**/*Test.class"
+    exclude "**/MatrixComparatorTest.class"
+}
