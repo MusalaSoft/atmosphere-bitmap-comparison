@@ -18,15 +18,9 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-sourceSets {
-    main.java.srcDir 'src'
-    test.java.srcDir 'test'
-    test.resources.srcDir 'resources'
-}
-
 publishing {
     publications {
-        atmosphereCommons(MavenPublication) {
+        BitmapComparison(MavenPublication) {
             groupId 'com.musala.atmosphere'
             artifactId 'atmosphere-bitmap-comparison'
             version version
@@ -38,6 +32,10 @@ publishing {
     repositories {
         mavenLocal()
     }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.13'
 }
 
 tasks.withType(Test) {
