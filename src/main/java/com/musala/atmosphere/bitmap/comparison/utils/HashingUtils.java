@@ -25,6 +25,8 @@ public class HashingUtils {
      *        - hashed matrix that contains the column we want to precompute
      * @param columnNumber
      *        - position of the column
+	 * @param rangeSize
+	 *        - the range size			
      * @return column with precomputed hash values.
      */
     public static long[] getRangeColumnHash(long[][] hashedMatrix, int columnNumber, int rangeSize) {

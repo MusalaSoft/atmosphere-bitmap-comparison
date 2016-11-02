@@ -1,7 +1,7 @@
 package com.musala.atmosphere.bitmap.comparison;
 
 /**
- * Contains a listener for found match in {@link ArrayFinder} search.
+ * Contains a listener for found match in {@link com.musala.atmosphere.bitmap.comparison.kmp.ArrayFinder} search.
  * 
  * @author denis.bialev
  * 
