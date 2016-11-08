@@ -1,3 +1,5 @@
+See our site for better context of this readme. [Click here](http://atmosphereframework.com/)
+
 # atmosphere-bitmap-comparison
 The bitmap-comparison libraries of the ATMOSPHERE mobile testing framework
 
