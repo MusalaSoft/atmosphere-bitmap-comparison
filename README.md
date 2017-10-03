@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/MusalaSoft/atmosphere-bitmap-comparison.svg?branch=master)](https://travis-ci.org/MusalaSoft/atmosphere-bitmap-comparison) [ ![Download](https://api.bintray.com/packages/musala/atmosphere/atmosphere-bitmap-comparison/images/download.svg) ](https://bintray.com/musala/atmosphere/atmosphere-bitmap-comparison/_latestVersion)  
+
 See our site for better context of this readme. [Click here](http://atmosphereframework.com/)
 
 # atmosphere-bitmap-comparison
